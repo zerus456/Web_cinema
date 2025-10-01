@@ -5,9 +5,11 @@ import AuthForm from "./components/AuthForm";
 
 function App() {
   return (
-    <div>
+    <div className="flex flex-col min-h-screen">
       <Navbar />
-      <AuthForm />
+      <main className="flex-1 bg-[#FDFCF0]">
+        <AuthForm />
+      </main>
       <Footer />
     </div>
   );
