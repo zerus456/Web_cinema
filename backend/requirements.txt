@@ -1,0 +1,32 @@
+# --- Core Flask framework ---
+Flask==3.0.3
+
+# --- Database ORM & PostgreSQL driver ---
+SQLAlchemy==2.0.36
+Flask-SQLAlchemy==3.1.1
+psycopg2-binary==2.9.9
+
+# --- JWT Authentication ---
+Flask-JWT-Extended==4.6.0
+
+# --- API Documentation (Swagger) ---
+flasgger==0.9.7b2
+
+# --- Cross-Origin Resource Sharing (cho React frontend) ---
+Flask-Cors==4.0.0
+
+# --- Production server (Render, VPS, Docker, etc.) ---
+gunicorn==22.0.0
+
+# --- Environment variable loader ---
+python-dotenv==1.0.1
+
+# --- Utility libraries (được Flask phụ thuộc) ---
+Werkzeug==3.0.3
+Jinja2==3.1.4
+itsdangerous==2.2.0
+click==8.1.7
+
+# --- Optional: Nếu bạn định xử lý thanh toán hoặc API call ---
+# requests==2.32.3
+# stripe==10.12.0
