@@ -1,45 +1,58 @@
 tags:
-  - Showtime
-summary: Create New Ticket
-description: Book a new ticket by providing user ID, showtime, seat, and price.
-consumes:
-  - application/json
+  - Showtimes
+
+summary: Get cinema information for a specific showtime
+description: |
+  This endpoint retrieves the cinema associated with a given showtime ID.  
+  It fetches the linked room and cinema from the database.
+
 produces:
   - application/json
 
-get:
-  tags:
-    - Showtime
-  summary: Get cinema information from showtime
-  description: |
-    Returns the cinema information associated with a showtime.
-    The relationship is resolved through `room_id` in the showtime record.
-  parameters:
-    - name: showtime_id
-      in: path
-      required: true
-      schema:
-        type: integer
-        example: 10
-  responses:
-    200:
-      description: Successfully retrieved cinema information
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              id:
-                type: integer
-                example: 3
-              name:
-                type: string
-                example: CGV Aeon Mall Bình Tân
-              address:
-                type: string
-                example: "01 Street 17A, Bình Tân District, Ho Chi Minh City"
-              phone:
-                type: string
-                example: "0901234567"
-    404:
-      description: Cinema not found
+parameters:
+  - name: showtime_id
+    in: path
+    required: true
+    type: integer
+    description: ID of the showtime to retrieve cinema info for
+    example: 12
+
+responses:
+  200:
+    description: Successfully retrieved cinema information
+    schema:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 3
+        name:
+          type: string
+          example: "Galaxy Cinema Nguyễn Du"
+        address:
+          type: string
+          example: "116 Nguyễn Du, Quận 1, TP.HCM"
+        phone:
+          type: string
+          example: "028 3823 5235"
+
+  404:
+    description: Showtime, room, or cinema not found
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "Showtime not found"
+
+  500:
+    description: Internal server error
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "Error fetching cinema"
+        error:
+          type: string
+          example: "Database connection failed"

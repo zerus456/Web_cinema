@@ -28,5 +28,6 @@ def route_get_showtimes_by_movie(movie_id):
 # 10
 # ✅ Get cinema info by showtime ID
 @showtime_routes.route("/<string:showtime_id>/cinema", methods=["GET"])
+@swag_from("../swagger/showtime/get_cinema_by_showtime.yaml")
 def route_get_cinema_by_showtime(showtime_id):
     return get_cinema_by_showtime(showtime_id)

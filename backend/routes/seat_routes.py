@@ -21,6 +21,6 @@ seat_routes = Blueprint("seat_routes", __name__)
 
 # 13
 @seat_routes.route("/<showtime_id>/seats", methods=["GET"])
-# @swag_from("../swagger/seat/get_seats_for_showtime.yaml")
+@swag_from("../swagger/seat/get_seats_for_showtime.yaml")
 def route_get_seats_for_showtime(showtime_id):
     return get_seats_for_showtime(showtime_id)

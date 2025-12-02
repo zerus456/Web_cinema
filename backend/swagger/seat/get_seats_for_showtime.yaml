@@ -1,0 +1,57 @@
+tags:
+  - Seats
+
+summary: Get all seats for a specific showtime
+description: |
+  This endpoint retrieves all seats available in the room associated with a given showtime.  
+  Each seat includes its ID, seat number, and seat type.
+
+produces:
+  - application/json
+
+parameters:
+  - name: showtime_id
+    in: path
+    required: true
+    type: integer
+    description: ID of the showtime to fetch seats for
+    example: 15
+
+responses:
+  200:
+    description: Successfully retrieved seats for the showtime
+    schema:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+            example: 101
+          seat_number:
+            type: string
+            example: "A10"
+          seat_type:
+            type: string
+            example: "VIP"
+
+  404:
+    description: Showtime not found
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "Showtime not found"
+
+  500:
+    description: Internal server error
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "Error fetching seats"
+        error:
+          type: string
+          example: "Database connection failed"
