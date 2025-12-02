@@ -1,73 +1,64 @@
-# React + TypeScript + Vite
+# Cinema Management System — Flask + ReactJS + PostgreSQL
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-stack web application to manage cinema operations: movies, showtimes, rooms, seats, tickets, snack combos, users, and payments — with JWT authentication and Swagger API docs.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+##  Project Structure
 
-## React Compiler
+WEB_CINEMA/
+│
+├── backend/ # Flask backend (API server)
+│ ├── app.py # Flask app factory + entrypoint
+│ ├── config.py # Config (DB, JWT, Swagger, CORS)
+│ ├── models.py # SQLAlchemy models (optional split per module)
+│ ├── controllers/ # Business logic per domain
+│ ├── routes/ # Blueprints: auth, movie, room, seat, tickets, showtime, cinema, payments, combo, user, ticket_type
+│ ├── swagger/ # Swagger YAML specs (Flasgger)
+│ └── ...
+│
+├── frontend/ # ReactJS SPA (Vite or CRA)
+│ ├── src/
+│ ├── package.json
+│ └── ...
+│
+├── requirements.txt # Python dependencies (root)
+├── runtime.txt # Python version for Render (e.g., python-3.12.3)
+├── render.yaml # (Optional) One-click multi-service deploy on Render
+└── README.md
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Tech Stack
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- **Backend:** Flask, Flask-SQLAlchemy, Flask-JWT-Extended, Flasgger, Flask-CORS, Gunicorn  
+- **Frontend:** ReactJS (Vite/CRA), Axios, React Router, TailwindCSS or Bootstrap  
+- **Database:** PostgreSQL (SQLAlchemy ORM)  
+- **Hosting:** Render (Web Service + Static Site + PostgreSQL)
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## Getting Started
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+###  Backend Setup
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+```bash
+cd backend
+python -m venv venv
+source venv/bin/activate       # Windows: venv\Scripts\activate
+pip install -r ../requirements.txt
+python app.py
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### Frontend setup
+cd ../frontend
+npm install
+npm run dev
+
+---
+
+### Members
+| Name                  | Role                  |
+| --------------------- | --------------------- |
+| **Nguyễn An Đức**     | Backend Developer     |
+| **Đoàn Hoài Việt**    | Frontend Developer    |
