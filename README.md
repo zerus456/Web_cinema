@@ -7,7 +7,6 @@ A full-stack web application to manage cinema operations: **movies, showtimes, r
 ## Features
 
 - **JWT Authentication** (login/register, role-based access)
-- **Movie Management** (CRUD movies, genres, duration)
 - **Room & Seat Management** (custom layouts)
 - **Showtime Scheduling**
 - **Ticket Booking & Payment**
@@ -46,7 +45,7 @@ WEB_CINEMA/
 
 ## Tech Stack
 
-- **Backend:** Flask, Flask-SQLAlchemy, Flask-JWT-Extended, Flasgger, Flask-CORS, Gunicorn  
+- **Backend:** Flask, Flask-SQLAlchemy, Flask-JWT-Extended, Swagger, Flask-CORS, Gunicorn  
 - **Frontend:** ReactJS (Vite), React Router, TailwindCSS
 - **Database:** PostgreSQL (SQLAlchemy ORM)  
 - **Hosting:** Render (Web Service + Static Site + PostgreSQL)
@@ -60,7 +59,7 @@ WEB_CINEMA/
 ```bash
 cd backend
 python -m venv venv
-source venv/bin/activate        # Windows: venv\Scripts\activate
+source venv\bin\activate        
 pip install -r ../requirements.txt
 python app.py
 ```
@@ -106,8 +105,6 @@ After running the backend, open **Swagger UI** at:
 2. Deploy **Flask API** as a **Web Service** (build command: `pip install -r requirements.txt`, start command: `gunicorn app:app`).  
 3. Deploy **React app** as a **Static Site** (build command: `npm run build`, publish directory: `dist`).  
 4. Add environment variables on Render for secrets and DB credentials.  
-
-Optional: use the included `render.yaml` for **one-click deploy**.
 
 ---
 
