@@ -36,7 +36,7 @@ def create_app():
     app.config["JWT_REFRESH_TOKEN_EXPIRES"] = app.config.get("JWT_REFRESH_TOKEN_EXPIRES", 86400)
 
     # ---------------------------
-    # ✅ SWAGGER CONFIG (sửa lại để hiển thị body)
+    # SWAGGER CONFIG
     # ---------------------------
     swagger_config = {
         "headers": [],
@@ -53,11 +53,11 @@ def create_app():
         "specs_route": "/apidocs/",
     }
 
-    # ⚡ Dùng chuẩn Swagger 2.0 (Flasgger hỗ trợ tốt nhất)
+    # Dùng chuẩn Swagger 2.0
     swagger_template = {
         "swagger": "2.0",
         "info": {
-            "title": "🎬 Cinema Management API",
+            "title": "Cinema Management API",
             "description": "API documentation for the Flask backend (Auth, Movie, Room, Cinema, etc.)",
             "version": "1.0.0",
             "contact": {
@@ -78,7 +78,7 @@ def create_app():
         "security": [{"Bearer": []}],
     }
 
-    # ✅ Tạo Swagger instance
+    # Tạo Swagger instance
     Swagger(app, config=swagger_config, template=swagger_template)
 
     # ---------------------------
@@ -130,7 +130,7 @@ def create_app():
 
     @app.route("/")
     def home():
-        return "🎬 Flask backend with SQLAlchemy + JWT + Swagger is ready!"
+        return "Flask backend with SQLAlchemy + JWT + Swagger is ready!"
     
     @app.route("/seed", methods=["POST"])
     def run_seed():
