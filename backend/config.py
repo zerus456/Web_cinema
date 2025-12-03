@@ -13,7 +13,6 @@ DB_URI = os.environ.get(
 db_name = DB_URI.rsplit("/", 1)[-1]
 db_user_pass_host = DB_URI.split("://")[1].rsplit("/", 1)[0]
 
-# Kết nối tới PostgreSQL (không chỉ định DB, mặc định là 'postgres')
 conn = psycopg2.connect(f"postgres://{db_user_pass_host}")
 conn.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
 cur = conn.cursor()
