@@ -15,8 +15,7 @@ from routes.combo_routes import combo_routes
 from routes.ticket_type_routes import ticket_type_routes
 from routes.user_routes import user_routes
 from flask_cors import CORS
-
-
+from sqlalchemy import text
 
 def create_app():
     app = Flask(__name__)
@@ -132,16 +131,18 @@ def create_app():
     @app.route("/")
     def home():
         return "🎬 Flask backend with SQLAlchemy + JWT + Swagger is ready!"
+    
+    @app.route("/seed", methods=["POST"])
+    def run_seed():
+        from seed_data import seed_data
+        seed_data(app)
+        return {"message": "Seed completed!"}
+
 
     return app
 
 app = create_app()
 
 if __name__ == "__main__":
-    app = create_app()
-    with app.app_context():
-        db.create_all()
     app.run(debug=True)
 
-# postgres://postgres:ducan06112004@localhost:5432/cinema_db
-#
